@@ -3,7 +3,10 @@ import {
 } from '@expo-google-fonts/roboto';
 import TitleBar from './src/components/TitleBar/TitleBar';
 import ContainerScreen from './src/components/Container/Container';
-import LabelInput from './src/components/Input/Input';
+import { FullInput, UfInput, StateInput } from './src/components/Input/Input';
+import ContainerForm from './src/components/Container/ContainerForm';
+import ContainerRow from './src/components/Container/ContainerRow';
+import ContainerScroll from './src/components/Container/ContainerScroll';
 
 export default function App() {
 
@@ -18,7 +21,18 @@ export default function App() {
   return (
     <ContainerScreen>
       <TitleBar />
-      <LabelInput label="Nome" placeholder="Digite seu nome" />
+      <ContainerScroll >
+        <ContainerForm>
+          <FullInput title="Informar CEP:" placeholder="CEP..."></FullInput>
+          <FullInput title="Logradouro:" placeholder="Logradouro..."></FullInput>
+          <FullInput title="Bairro:" placeholder="Bairro..."></FullInput>
+          <FullInput title="Cidade:" placeholder="Cidade..."></FullInput>
+          <ContainerRow>
+            <StateInput title="Estado:" placeholder="Estado..."></StateInput>
+            <UfInput title="UF:" placeholder="UF..."></UfInput>
+          </ContainerRow>
+        </ContainerForm>
+      </ContainerScroll>
     </ContainerScreen>
   );
 }

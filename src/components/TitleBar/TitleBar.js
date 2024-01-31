@@ -1,8 +1,9 @@
+import { SafeAreaView } from 'react-native';
 import styled from 'styled-components';
 
 const TitleBarContainer = styled.View`
 width: 100%;
-height: 201px;
+height: 20%;
 border-radius: 0px 0px 15px 15px;
 background: #FECC2B;
 shadow-color: #000;
@@ -24,7 +25,9 @@ font-weight: 500;
 
 const TitleBar = () => (
     <TitleBarContainer>
-        <TitleText>Consumo da API ViaCep</TitleText>
+        <SafeAreaView>
+            <TitleText>Consumo da API ViaCep</TitleText>
+        </SafeAreaView>
     </TitleBarContainer>
 );
 

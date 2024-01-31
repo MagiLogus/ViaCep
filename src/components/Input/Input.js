@@ -1,32 +1,67 @@
-import React from 'react'; 
-import styled from 'styled-components'; 
+import styled from 'styled-components';
 
-const InputGroup = styled.View`
-  width: 100%;
-  margin-bottom: 20px;
-`;
+export const ContainerInput = styled.View`
+align-items: start;
+`
 
-const Label = styled.Text`
-  margin-bottom: 8px; // Espaço entre o rótulo e o input
-  font-size: 16px; // Tamanho da fonte do rótulo
-  color: #000; // Cor do texto do rótulo
-`;
+export const LabelInput = styled.Text`
+color: #047CD3;
+font-family: "Roboto_700Bold";
+font-size: 18px;
+font-style: normal;
+font-weight: 700;
+`
 
-const Input = styled.TextInput`
-  width: 100%;
-  padding: 20px;
-  border-radius: 10px;
-  border: 2px solid #A1A1A1;
-  background: #F6F6F6;
-`;
+export const Input = styled.View`
+width: 100%;
+padding: 20px;
+border-radius: 10px;
+border: 2px solid #A1A1A1;
+background: #F6F6F6;
+`
 
-// Componente funcional LabelInput
-const LabelInput = ({ label, ...props }) => (
-  <InputGroup>
-    <Label>{label}</Label>
-    <Input {...props} /> // Propaga todas as props recebidas para o componente Input
-  </InputGroup>
+export const ContainerState = styled(ContainerInput)`
+width: 70%;
+`
+
+export const ContainerUf = styled(ContainerInput)`
+width: 23%;
+`
+
+export const TextInput = styled.TextInput`
+color: #A1A1A1;
+font-family: "Roboto_500Medium";
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+`
+
+const FullInput = ({ title, placeholder }) => (
+  <ContainerInput>
+    <LabelInput>{title}</LabelInput>
+    <Input>
+      <TextInput placeholder={placeholder}></TextInput>
+    </Input>
+  </ContainerInput>
 );
 
-export default LabelInput;
+const StateInput = ({ title, placeholder }) => (
+  <ContainerState>
+    <LabelInput>{title}</LabelInput>
+    <Input>
+      <TextInput placeholder={placeholder}></TextInput>
+    </Input>
+  </ContainerState>
+);
+
+const UfInput = ({ title, placeholder }) => (
+  <ContainerInput>
+    <LabelInput>{title}</LabelInput>
+    <Input>
+      <TextInput placeholder={placeholder}></TextInput>
+    </Input>
+  </ContainerInput>
+);
+
+export { FullInput, StateInput,UfInput };
 
