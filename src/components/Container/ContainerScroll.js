@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
-const Container = styled.View`
+const Container = styled.ScrollView`
 flex-grow: 1;
-justify-content: space-between;
-align-items: center;
 `;
 
 const ContainerScroll = ({ children }) => (

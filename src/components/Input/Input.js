@@ -36,32 +36,44 @@ font-style: normal;
 font-weight: 500;
 `
 
-const FullInput = ({ title, placeholder }) => (
+const FullInput = ({ title, placeholder, value, onChangeText, keyboardType }) => (
   <ContainerInput>
     <LabelInput>{title}</LabelInput>
     <Input>
-      <TextInput placeholder={placeholder}></TextInput>
+      <TextInput placeholder={placeholder}
+        value={value}
+        onChangeText={onChangeText}
+        keyboardType={keyboardType}
+        style={{ flex: 1 }} />
     </Input>
   </ContainerInput>
 );
 
-const StateInput = ({ title, placeholder }) => (
+const StateInput = ({ title, placeholder, value, onChangeText, keyboardType }) => (
   <ContainerState>
     <LabelInput>{title}</LabelInput>
     <Input>
-      <TextInput placeholder={placeholder}></TextInput>
+      <TextInput placeholder={placeholder}
+        value={value}
+        onChangeText={onChangeText}
+        keyboardType={keyboardType}
+        style={{ flex: 1 }} />
     </Input>
   </ContainerState>
 );
 
-const UfInput = ({ title, placeholder }) => (
+const UfInput = ({ title, placeholder, value, onChangeText, keyboardType }) => (
   <ContainerInput>
     <LabelInput>{title}</LabelInput>
     <Input>
-      <TextInput placeholder={placeholder}></TextInput>
+      <TextInput placeholder={placeholder}
+        value={value}
+        onChangeText={onChangeText}
+        keyboardType={keyboardType}
+        style={{ flex: 1 }} />
     </Input>
   </ContainerInput>
 );
 
-export { FullInput, StateInput,UfInput };
+export { FullInput, StateInput, UfInput };
 
