@@ -1,7 +1,7 @@
 import {
   useFonts, Roboto_100Thin, Roboto_100Thin_Italic, Roboto_300Light, Roboto_300Light_Italic, Roboto_400Regular, Roboto_400Regular_Italic, Roboto_500Medium, Roboto_500Medium_Italic, Roboto_700Bold, Roboto_700Bold_Italic, Roboto_900Black, Roboto_900Black_Italic
 } from '@expo-google-fonts/roboto';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import api from './src/services/Services';
 import TitleBar from './src/components/TitleBar/TitleBar';
 import ContainerScreen from './src/components/Container/Container';
@@ -20,41 +20,61 @@ export default function App() {
   const [estado, setEstado] = useState('');
   const [uf, setUf] = useState('');
 
+  useEffect(async () => {
+    try {
+      if (cep != "" && cep.length === 8) {
+        const response = await api.get(`/${cep}/json/`);
+
+        if (response.error) {
+          alert("Verifique o CEP!")
+          return;
+        }
+
+        setLogradouro(response.data.logradouro);
+        setBairro(response.data.bairro);
+        setCidade(response.data.localidade);
+        setEstado(response.data.uf);
+        setUf(response.data.uf);
+
+
+      }
+    } catch (error) {
+
+    }
+  }, [cep]);
+
+  // ao carregar do componente
+  useEffect(() => {
+
+  }, []);//array dependências
+
+// ao carregar do componente
+// ao alterar do xpto
+  useEffect(() => {
+
+  }, [xpto]);//array dependências
+
+  // ao carregar do componente
+// ao alterar do xpto
+// ao desmontar do componente
+  useEffect(() => {
+    return alert("fui desmontado,morri!!");
+  }, [xpto]);//array dependências
+
+
+
+  // ao carregar do componente
+// loop infinito
+  useEffect(() => {
+    return alert("fui desmontado,morri!!");
+  });//sem array dependências - programador esqueceu!
+
   const [fontsLoaded, fontError] = useFonts({
     Roboto_100Thin, Roboto_100Thin_Italic, Roboto_300Light, Roboto_300Light_Italic, Roboto_400Regular, Roboto_400Regular_Italic, Roboto_500Medium, Roboto_500Medium_Italic, Roboto_700Bold, Roboto_700Bold_Italic, Roboto_900Black, Roboto_900Black_Italic
   });
 
   if (!fontsLoaded && !fontError) {
     return null;
-  }
-
-  async function buscarEndereco() {
-    if (cep.length === 8) {
-      try {
-        const response = await api.get(`/${cep}/json`);
-        // Verifique se a resposta não contém o campo 'erro'
-        if (response.data) {
-          setLogradouro(response.data.logradouro);
-          setBairro(response.data.bairro);
-          setCidade(response.data.localidade);
-          setEstado(response.data.uf);
-          setUf(response.data.uf);
-        } else {
-          console.error("CEP inválido ou não encontrado");
-          // Aqui você pode limpar os campos ou exibir uma mensagem ao usuário
-        }
-      } catch (error) {
-        console.error("Erro na busca do endereço: ", error);
-        // Tratamento de erro, como exibir uma mensagem ao usuário
-      }
-    }
-  }
-
-  function handleCepChange(text) {
-    setCep(text.replace(/\D/g, ''));
-    if (text.replace(/\D/g, '').length === 8) {
-      buscarEndereco();
-    }
   }
 
   return (
@@ -66,7 +86,7 @@ export default function App() {
             <FullInput title="Informar CEP:"
               placeholder="CEP..."
               value={cep}
-              onChangeText={handleCepChange}
+              onChangeText={text => setCep(text)}
               keyboardType="numeric" />
             <FullInput title="Logradouro:"
               placeholder="Logradouro..."

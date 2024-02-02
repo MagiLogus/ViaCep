@@ -36,7 +36,7 @@ font-style: normal;
 font-weight: 500;
 `
 
-const FullInput = ({ title, placeholder, value, onChangeText, keyboardType }) => (
+const FullInput = ({ title, placeholder, value, onChangeText, keyboardType, editable=false }) => (
   <ContainerInput>
     <LabelInput>{title}</LabelInput>
     <Input>

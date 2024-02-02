@@ -1,4 +1,3 @@
-//Imports
 import axios from "axios";
 
 export const externalApiUrl = `https://viacep.com.br/ws`;
