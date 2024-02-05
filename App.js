@@ -43,32 +43,6 @@ export default function App() {
     }
   }, [cep]);
 
-  // ao carregar do componente
-  useEffect(() => {
-
-  }, []);//array dependências
-
-// ao carregar do componente
-// ao alterar do xpto
-  useEffect(() => {
-
-  }, [xpto]);//array dependências
-
-  // ao carregar do componente
-// ao alterar do xpto
-// ao desmontar do componente
-  useEffect(() => {
-    return alert("fui desmontado,morri!!");
-  }, [xpto]);//array dependências
-
-
-
-  // ao carregar do componente
-// loop infinito
-  useEffect(() => {
-    return alert("fui desmontado,morri!!");
-  });//sem array dependências - programador esqueceu!
-
   const [fontsLoaded, fontError] = useFonts({
     Roboto_100Thin, Roboto_100Thin_Italic, Roboto_300Light, Roboto_300Light_Italic, Roboto_400Regular, Roboto_400Regular_Italic, Roboto_500Medium, Roboto_500Medium_Italic, Roboto_700Bold, Roboto_700Bold_Italic, Roboto_900Black, Roboto_900Black_Italic
   });
@@ -87,7 +61,9 @@ export default function App() {
               placeholder="CEP..."
               value={cep}
               onChangeText={text => setCep(text)}
-              keyboardType="numeric" />
+              keyboardType="numeric" 
+              editable={true}
+              />
             <FullInput title="Logradouro:"
               placeholder="Logradouro..."
               value={logradouro}

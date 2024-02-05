@@ -36,7 +36,7 @@ font-style: normal;
 font-weight: 500;
 `
 
-const FullInput = ({ title, placeholder, value, onChangeText, keyboardType, editable=false }) => (
+const FullInput = ({ title, placeholder, value, onChangeText, keyboardType, editable = false }) => (
   <ContainerInput>
     <LabelInput>{title}</LabelInput>
     <Input>
@@ -44,12 +44,14 @@ const FullInput = ({ title, placeholder, value, onChangeText, keyboardType, edit
         value={value}
         onChangeText={onChangeText}
         keyboardType={keyboardType}
-        style={{ flex: 1 }} />
+        style={{ flex: 1 }}
+        editable={editable}
+      />
     </Input>
   </ContainerInput>
 );
 
-const StateInput = ({ title, placeholder, value, onChangeText, keyboardType }) => (
+const StateInput = ({ title, placeholder, value, onChangeText, keyboardType, editable = false }) => (
   <ContainerState>
     <LabelInput>{title}</LabelInput>
     <Input>
@@ -57,12 +59,14 @@ const StateInput = ({ title, placeholder, value, onChangeText, keyboardType }) =
         value={value}
         onChangeText={onChangeText}
         keyboardType={keyboardType}
-        style={{ flex: 1 }} />
+        style={{ flex: 1 }}
+        editable={editable}
+      />
     </Input>
   </ContainerState>
 );
 
-const UfInput = ({ title, placeholder, value, onChangeText, keyboardType }) => (
+const UfInput = ({ title, placeholder, value, onChangeText, keyboardType, editable = false }) => (
   <ContainerInput>
     <LabelInput>{title}</LabelInput>
     <Input>
@@ -70,7 +74,9 @@ const UfInput = ({ title, placeholder, value, onChangeText, keyboardType }) => (
         value={value}
         onChangeText={onChangeText}
         keyboardType={keyboardType}
-        style={{ flex: 1 }} />
+        style={{ flex: 1 }}
+        editable={editable}
+      />
     </Input>
   </ContainerInput>
 );
